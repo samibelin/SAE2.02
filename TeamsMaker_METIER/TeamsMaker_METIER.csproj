@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="JeuxTest\Fichiers\lineaireleo.jt" />
+    <None Remove="JeuxTest\Fichiers\newgen.jt" />
+    <None Remove="JeuxTest\Fichiers\ProgressiveLeo.jt" />
+    <None Remove="JeuxTest\Fichiers\ressourceNSwap.jt" />
+    <None Remove="JeuxTest\Fichiers\testgen.jt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="JeuxTest\Fichiers\lineaireleo.jt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JeuxTest\Fichiers\newgen.jt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JeuxTest\Fichiers\ProgressiveLeo.jt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JeuxTest\Fichiers\ressourceNSwap.jt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JeuxTest\Fichiers\testgen.jt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
