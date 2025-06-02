@@ -23,9 +23,9 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
             List<Personnage> tempEchecs = new List<Personnage>();
             Random rng = new Random();
 
-            int margeBasse = 200;
-            int margeHaute = 200;
-            const int ChangementMarge = 1;
+            double margeBasse = 50;
+            double margeHaute = 50;
+            const double ChangementMarge = 0.1;
             const int nbMembreEquipe = 4;
 
             while (personnagesDispo.Count >= nbMembreEquipe)
@@ -44,6 +44,7 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
                 }
 
                 int totalNiveau = equipeTemp.Sum(p => p.LvlPrincipal);
+                totalNiveau /= nbMembreEquipe;
 
                 if (totalNiveau >= margeBasse && totalNiveau <= margeHaute)
                 {
