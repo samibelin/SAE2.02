@@ -21,7 +21,6 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
             Repartition repartition = new Repartition(jeuTest);
             Random rng = new Random();
 
-            // Séparer les personnages par rôle
             List<Personnage> dpsDispo = new List<Personnage>();
             List<Personnage> tankDispo = new List<Personnage>();
             List<Personnage> supportDispo = new List<Personnage>();
@@ -36,14 +35,13 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
                 }
             }
 
-            // Listes temporaires pour les échecs
             List<Personnage> dpsEchec = new List<Personnage>();
             List<Personnage> tankEchec = new List<Personnage>();
             List<Personnage> supportEchec = new List<Personnage>();
 
             double margeBasse = 50;
             double margeHaute = 50;
-            const double ChangementMarge = 0.05;
+            const double ChangementMarge = 0.01;
 
             while (dpsDispo.Count >= 2 && tankDispo.Count >= 1 && supportDispo.Count >= 1)
             {
@@ -105,7 +103,6 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
                     }
                 }
             }
-
             stopwatch.Stop();
             this.TempsExecution = stopwatch.ElapsedMilliseconds;
             return repartition;

@@ -42,7 +42,6 @@ namespace TeamsMaker_METIER.Algorithmes
                 case NomAlgorithme.SMARTRANDOM1: res = "Algorithme Smart Random"; break;
                 case NomAlgorithme.SMARTRANDOM2: res = "Algorithme Smart Random stage 2"; break;
                 case NomAlgorithme.MOYENNEN2: res = "Algorithme Moyenne avec Role"; break;
-                case NomAlgorithme.SMARTRANDOM3: res = "Algorithme Smart Random stage 2 + Meilleure fin"; break;
             }
             return res;
         }
