@@ -12,12 +12,12 @@ namespace TeamsMaker_METIER.Algorithmes
     /// </summary>
     public enum NomAlgorithme
     {
-        ALGOTEST,
         GLOUTONCROISSANT,
         EXTREME,
         MOYENNE,
         NSWAP,
-        SMARTRANDOM
+        SMARTRANDOM,
+        MOYENNEN2
     }
 
 
@@ -38,6 +38,7 @@ namespace TeamsMaker_METIER.Algorithmes
                 case NomAlgorithme.MOYENNE: res = "Algorithme Moyenne"; break;
                 case NomAlgorithme.NSWAP: res = "Algorithme 2-Swap"; break;
                 case NomAlgorithme.SMARTRANDOM: res = "Algorithme Smart Random"; break;
+                case NomAlgorithme.MOYENNEN2: res = "Algorithme Moyenne avec Role"; break;
             }
             return res;
         }
