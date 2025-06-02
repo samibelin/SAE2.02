@@ -16,8 +16,8 @@ namespace TeamsMaker_METIER.Algorithmes
         GLOUTONCROISSANT,
         EXTREME,
         MOYENNE,
-        NSWAP
-
+        NSWAP,
+        SMARTRANDOM
     }
 
 
@@ -37,6 +37,7 @@ namespace TeamsMaker_METIER.Algorithmes
                 case NomAlgorithme.EXTREME: res = "Algorithme Extreme en premier"; break;
                 case NomAlgorithme.MOYENNE: res = "Algorithme Moyenne"; break;
                 case NomAlgorithme.NSWAP: res = "Algorithme 2-Swap"; break;
+                case NomAlgorithme.SMARTRANDOM: res = "Algorithme Smart Random"; break;
             }
             return res;
         }
