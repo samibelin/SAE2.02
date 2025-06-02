@@ -41,6 +41,7 @@ namespace TeamsMaker_METIER.Personnages.Classes
                 case Classe.WARLOCK:
                 case Classe.MOINE:
                     role = Role.DPS;
+
                     break;
                 case Classe.BARD:
                 case Classe.CLERC:

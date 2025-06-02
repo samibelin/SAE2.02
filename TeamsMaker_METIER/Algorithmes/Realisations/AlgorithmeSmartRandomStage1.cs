@@ -8,7 +8,7 @@ using TeamsMaker_METIER.Personnages;
 
 namespace TeamsMaker_METIER.Algorithmes.Realisations
 {
-    internal class AlgorithmeSmartRandom : Algorithme
+    internal class AlgorithmeSmartRandomStage1 : Algorithme
     {
         #region Méthode
 
