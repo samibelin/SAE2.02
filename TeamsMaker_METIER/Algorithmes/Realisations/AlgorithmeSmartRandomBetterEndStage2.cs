@@ -9,7 +9,7 @@ using TeamsMaker_METIER.Personnages.Classes;
 
 namespace TeamsMaker_METIER.Algorithmes.Realisations
 {
-    internal class AlgorithmeSmartRandomStage2 : Algorithme
+    internal class AlgorithmeSmartRandomBetterEndStage2 : Algorithme
     {
         #region Méthode
 
@@ -21,7 +21,6 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
             Repartition repartition = new Repartition(jeuTest);
             Random rng = new Random();
 
-            // Séparer les personnages par rôle
             List<Personnage> dpsDispo = new List<Personnage>();
             List<Personnage> tankDispo = new List<Personnage>();
             List<Personnage> supportDispo = new List<Personnage>();
@@ -36,7 +35,6 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
                 }
             }
 
-            // Listes temporaires pour les échecs
             List<Personnage> dpsEchec = new List<Personnage>();
             List<Personnage> tankEchec = new List<Personnage>();
             List<Personnage> supportEchec = new List<Personnage>();
@@ -45,7 +43,7 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
             double margeHaute = 50;
             const double ChangementMarge = 0.05;
 
-            while (dpsDispo.Count >= 2 && tankDispo.Count >= 1 && supportDispo.Count >= 1)
+            while (dpsDispo.Count >= 2 && tankDispo.Count >= 1 && supportDispo.Count >= 1 && (margeHaute - margeBasse <= 50))
             {
                 // Sélection aléatoire des membres de l’équipe
                 Personnage tank = tankDispo[rng.Next(tankDispo.Count)];
@@ -105,6 +103,58 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
                     }
                 }
             }
+
+            // Phase de fin
+
+            while (dpsDispo.Count >= 2 && tankDispo.Count >= 1 && supportDispo.Count >= 1)
+            {
+                Equipe meilleureEquipe = null;
+                int meilleureDistance = int.MaxValue;
+
+                foreach (var support in supportDispo)
+                {
+                    foreach (var tank in tankDispo)
+                    {
+                        for (int i = 0; i < dpsDispo.Count - 1; i++)
+                        {
+                            for (int j = i + 1; j < dpsDispo.Count; j++)
+                            {
+                                int somme = support.LvlPrincipal + tank.LvlPrincipal + dpsDispo[i].LvlPrincipal + dpsDispo[j].LvlPrincipal;
+                                int distance = Math.Abs(somme - 200);
+
+                                if (distance < meilleureDistance)
+                                {
+                                    meilleureDistance = distance;
+                                    meilleureEquipe = new Equipe();
+                                    meilleureEquipe.AjouterMembre(support);
+                                    meilleureEquipe.AjouterMembre(tank);
+                                    meilleureEquipe.AjouterMembre(dpsDispo[i]);
+                                    meilleureEquipe.AjouterMembre(dpsDispo[j]);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (meilleureEquipe != null)
+                {
+                    foreach (var p in meilleureEquipe.Membres)
+                    {
+                        supportDispo.Remove(p);
+                        tankDispo.Remove(p);
+                        dpsDispo.Remove(p);
+                    }
+
+                    repartition.AjouterEquipe(meilleureEquipe);
+                }
+                else
+                {
+                    break; // Plus de combinaison possible
+                }
+            }
+
+
+
 
             stopwatch.Stop();
             this.TempsExecution = stopwatch.ElapsedMilliseconds;

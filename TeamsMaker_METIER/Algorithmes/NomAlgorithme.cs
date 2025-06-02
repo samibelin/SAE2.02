@@ -16,8 +16,10 @@ namespace TeamsMaker_METIER.Algorithmes
         EXTREME,
         MOYENNE,
         NSWAP,
-        SMARTRANDOM,
-        MOYENNEN2
+        SMARTRANDOM1,
+        SMARTRANDOM2,
+        MOYENNEN2,
+        SMARTRANDOM3
     }
 
 
@@ -37,8 +39,10 @@ namespace TeamsMaker_METIER.Algorithmes
                 case NomAlgorithme.EXTREME: res = "Algorithme Extreme en premier"; break;
                 case NomAlgorithme.MOYENNE: res = "Algorithme Moyenne"; break;
                 case NomAlgorithme.NSWAP: res = "Algorithme 2-Swap"; break;
-                case NomAlgorithme.SMARTRANDOM: res = "Algorithme Smart Random"; break;
+                case NomAlgorithme.SMARTRANDOM1: res = "Algorithme Smart Random"; break;
+                case NomAlgorithme.SMARTRANDOM2: res = "Algorithme Smart Random stage 2"; break;
                 case NomAlgorithme.MOYENNEN2: res = "Algorithme Moyenne avec Role"; break;
+                case NomAlgorithme.SMARTRANDOM3: res = "Algorithme Smart Random stage 2 + Meilleure fin"; break;
             }
             return res;
         }
