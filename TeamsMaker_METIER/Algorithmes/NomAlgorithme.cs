@@ -19,7 +19,8 @@ namespace TeamsMaker_METIER.Algorithmes
         SMARTRANDOM1,
         SMARTRANDOM2,
         MOYENNEN2,
-        SMARTRANDOM3
+        SMARTRANDOM3,
+        NOPT
     }
 
 

@@ -96,6 +96,8 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
                 }
             }
 
+
+            // On commence avec une liste vide et l'index 0
             Combiner(new List<Personnage>(), 0);
             return resultats;
         }
