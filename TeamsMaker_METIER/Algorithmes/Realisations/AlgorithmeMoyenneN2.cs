@@ -17,8 +17,8 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
         /// </summary>
         private Personnage Recherche(int niveauAttendu, List<Personnage> listePersonnages, Role role)
         {
-            Personnage meilleur = null;
-            int meilleureDifference = int.MaxValue;
+            Personnage res = null;
+            int bestDifference = int.MaxValue;
 
             foreach (var p in listePersonnages)
             {
@@ -27,10 +27,10 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
 
                 int diff = Math.Abs(p.LvlPrincipal - niveauAttendu);
 
-                if (diff < meilleureDifference)
+                if (diff < bestDifference)
                 {
-                    meilleureDifference = diff;
-                    meilleur = p;
+                    bestDifference = diff;
+                    res = p;
                 }
 
                 // Si la différence est 0, on a trouvé le match parfait
@@ -38,7 +38,7 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
                     break;
             }
 
-            return meilleur;
+            return res;
         }
 
         /// <summary>

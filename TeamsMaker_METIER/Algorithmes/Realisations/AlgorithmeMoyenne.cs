@@ -27,11 +27,9 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
             Personnage pPrec = null;
             Personnage resultat = null;
             int i = 0;
-
             while (i < listePersonnages.Count && resultat == null)
             {
                 Personnage p = listePersonnages[i];
-
                 if (p.LvlPrincipal == niveauAttendu)
                 {
                     resultat = p;
@@ -46,23 +44,19 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
                     {
                         int diffPrec = Math.Abs(pPrec.LvlPrincipal - niveauAttendu);
                         int diffActuel = Math.Abs(p.LvlPrincipal - niveauAttendu);
-
                         if (diffActuel < diffPrec)
                             resultat = p;
                         else
                             resultat = pPrec;
                     }
                 }
-
                 pPrec = p;
                 i++;
             }
-
             if (resultat == null)
             {
                 resultat = listePersonnages[^1];
             }
-
             return resultat;
         }
 
@@ -102,10 +96,8 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
 
                     personnagesDispo.Remove(meilleurChoix);
                 }
-
                 repartition.AjouterEquipe(equipe);
             }
-
             stopwatch.Stop();
             this.TempsExecution = stopwatch.ElapsedMilliseconds;
             return repartition;

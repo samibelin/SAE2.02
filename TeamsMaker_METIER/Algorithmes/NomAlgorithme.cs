@@ -17,7 +17,8 @@ namespace TeamsMaker_METIER.Algorithmes
         MOYENNE,
         NSWAP,
         SMARTRANDOM,
-        MOYENNEN2
+        MOYENNEN2,
+        NOPT
     }
 
 
@@ -39,6 +40,7 @@ namespace TeamsMaker_METIER.Algorithmes
                 case NomAlgorithme.NSWAP: res = "Algorithme 2-Swap"; break;
                 case NomAlgorithme.SMARTRANDOM: res = "Algorithme Smart Random"; break;
                 case NomAlgorithme.MOYENNEN2: res = "Algorithme Moyenne avec Role"; break;
+                case NomAlgorithme.NOPT: res = "Algorithme N-Opt"; break;
             }
             return res;
         }

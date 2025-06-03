@@ -33,17 +33,13 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
             while (fin - debut + 1 >= 4)
             {
                 Equipe equipe = new Equipe();
-
                 //ajout des deux plus bas en niveau
-
                 for (int i = 0; i<2; i++)                
                 {
                     equipe.AjouterMembre(arrJeuTest[debut]);
                     debut ++;
                 }
-
                 //ajout des deux plus haut en niveau
-
                 for (int i = 0; i < 2; i++)
                 {
                     equipe.AjouterMembre(arrJeuTest[fin]);
@@ -51,9 +47,6 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
                 }
                 repartition.AjouterEquipe(equipe);
             }
-
-
-
             stopwatch.Stop();                                       //arrêt du chrono
             this.TempsExecution = stopwatch.ElapsedMilliseconds;    //affichage du chrono.
             return repartition;
