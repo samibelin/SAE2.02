@@ -22,6 +22,7 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
             while (amelioration)
             {
                 amelioration = false;
+                bool sortieAnticipee = false;
 
                 for (int i = 0; i < repartition.Equipes.Count(); i++)
                 {
@@ -31,7 +32,6 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
                         Equipe equipe2 = repartition.Equipes[j];
 
                         var tousPersos = equipe1.Membres.Concat(equipe2.Membres).ToList();
-
                         var repartitionsPossibles = GenererToutesRepartitions(tousPersos);
 
                         foreach (var (groupe1, groupe2) in repartitionsPossibles)
@@ -41,19 +41,11 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
                             Equipe copie1 = copie.Equipes[i];
                             Equipe copie2 = copie.Equipes[j];
 
-                            // Retirer tous les membres actuels
-                            foreach (var p in equipe1.Membres)
-                                copie1.RetirerMembre(copie1.Membres.First(mp => mp == p));
+                            RetirerMembres(copie1, equipe1.Membres);
+                            RetirerMembres(copie2, equipe2.Membres);
 
-                            foreach (var p in equipe2.Membres)
-                                copie2.RetirerMembre(copie2.Membres.First(mp => mp == p));
-
-                            // Ajouter les nouveaux membres
-                            foreach (var p in groupe1)
-                                copie1.AjouterMembre(p);
-
-                            foreach (var p in groupe2)
-                                copie2.AjouterMembre(p);
+                            AjouterMembres(copie1, groupe1);
+                            AjouterMembres(copie2, groupe2);
 
                             copie.LancerEvaluation(Problemes.Probleme.SIMPLE);
 
@@ -61,13 +53,14 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
                             {
                                 repartition = copie;
                                 amelioration = true;
-                                goto RedemarrerDepuisDebut;
+                                sortieAnticipee = true;
+                                break;
                             }
                         }
+                        if (sortieAnticipee) break;
                     }
+                    if (sortieAnticipee) break;
                 }
-
-            RedemarrerDepuisDebut:;
             }
 
             stopwatch.Stop();
@@ -78,28 +71,41 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
         private List<(List<Personnage>, List<Personnage>)> GenererToutesRepartitions(List<Personnage> persos)
         {
             var resultats = new List<(List<Personnage>, List<Personnage>)>();
-
-            void Combiner(List<Personnage> courant, int index)
-            {
-                if (courant.Count == 4)
-                {
-                    var complement = persos.Except(courant).ToList();
-                    resultats.Add((new List<Personnage>(courant), complement));
-                    return;
-                }
-
-                for (int i = index; i < persos.Count; i++)
-                {
-                    courant.Add(persos[i]);
-                    Combiner(courant, i + 1);
-                    courant.RemoveAt(courant.Count - 1);
-                }
-            }
-
-
-            // On commence avec une liste vide et l'index 0
-            Combiner(new List<Personnage>(), 0);
+            Combiner(persos, new List<Personnage>(), 0, resultats);
             return resultats;
+        }
+
+        private void Combiner(List<Personnage> persos, List<Personnage> courant, int index, List<(List<Personnage>, List<Personnage>)> resultats)
+        {
+            if (courant.Count == 4)
+            {
+                var complement = persos.Except(courant).ToList();
+                resultats.Add((new List<Personnage>(courant), complement));
+                return;
+            }
+            for (int i = index; i < persos.Count; i++)
+            {
+                courant.Add(persos[i]);
+                Combiner(persos, courant, i + 1, resultats);
+                courant.RemoveAt(courant.Count - 1);
+            }
+        }
+
+        private void RetirerMembres(Equipe equipe, IEnumerable<Personnage> membres)
+        {
+            foreach (var p in membres)
+            {
+                var membre = equipe.Membres.First(mp => mp == p);
+                equipe.RetirerMembre(membre);
+            }
+        }
+
+        private void AjouterMembres(Equipe equipe, IEnumerable<Personnage> membres)
+        {
+            foreach (var p in membres)
+            {
+                equipe.AjouterMembre(p);
+            }
         }
     }
 }
