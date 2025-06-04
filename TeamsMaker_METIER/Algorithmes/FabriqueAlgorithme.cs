@@ -36,7 +36,7 @@ namespace TeamsMaker_METIER.Algorithmes
                 case NomAlgorithme.MOYENNE: res = new AlgorithmeMoyenne(); break;
                 case NomAlgorithme.NSWAP: res = new Algorithme2Swap(); break;
                 case NomAlgorithme.SMARTRANDOM1: res = new AlgorithmeSmartRandomStage1(); break;
-                case NomAlgorithme.MOYENNEN2: res = new AlgorithmeMoyenneN2(); break;
+                case NomAlgorithme.EXTREMEN2: res = new AlgorithmeExtremeN2(); break;
                 case NomAlgorithme.NOPT: res = new Algorithme2Opt(); break;
             }
             return res;
