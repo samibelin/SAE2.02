@@ -36,6 +36,9 @@
     <None Update="JeuxTest\Fichiers\test_extremeN2.jt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="JeuxTest\Fichiers\test_ExtremeN2P.jt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
