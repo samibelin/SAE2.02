@@ -32,4 +32,10 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="JeuxTest\Fichiers\test_extremeN2.jt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

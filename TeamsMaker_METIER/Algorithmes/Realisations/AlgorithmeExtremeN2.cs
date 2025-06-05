@@ -75,15 +75,12 @@ namespace TeamsMaker_METIER.Algorithmes.Realisations
                     {
                         copie.Add(perso);
                     }
-
                     // Tri à nouveau pour respecter l'ordre original (faible à fort)
                     copie.Sort(new ComparateurPersonnageParNiveauPrincipal());
-
                     // On ne peut plus former d'équipe valide
                     peutFormerEquipe = false;
                 }
             }
-
             stopwatch.Stop();
             this.TempsExecution = stopwatch.ElapsedMilliseconds;
             return repartition;
